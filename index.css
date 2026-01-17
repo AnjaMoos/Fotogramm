@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    background-color: #2c90b7;
+}
+
+header {
+    height: 80px;
+    background-color: #082229;
+box-shadow: 0px 10px 44px 9px #082229;
+display: flex;
+align-items: center;
+}
+
+.logo{
+    height: 54px;
+}
+
+footer {
+    height: 80px;
+    background-color: #082229;
+    width: 100%;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+
+color: white;
+font-size: 40px;
+}
+
+#contetn{
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.front_photo{
+    height: 250px;
+    width: 250px;
+    padding: 8px;
+        border-radius: 8px;
+}
+
+
+/* dialog */
+
+dialog.opened {
+    border: 5px solid red;
+    transform: translateX(50px);
+    transition: all 500ms ease-in;
+}
+
+dialog.opened::backdrop {
+    background-color: aqua;
+    transition: all 250ms ease-in;
+}
+
+dialog::backdrop {
+    opacity: 0.5;
+    background-color: aqua;
+    transition: all 250ms ease-in;
+}
+
+dialog.closed {
+    transform: translateY(50px);
+    transition: all 500ms ease-in;
+}

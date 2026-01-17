@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="./img/icon.jpg">
+    <title>FotoGram</title>
+    <link rel="stylesheet" href="index.css"> 
+</head>
+
+
+<body onload="render()">
+<header>
+    <img src="./img/header.jpg" alt="logo" class="logo">
+</header>
+
+<h1>Anja's photo album</h1>
+
+<main id="content">
+
+    <div id="dialog">
+    </div>
+
+       <dialog id="myDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescr">
+            <header>
+                <h2 id="dialogTitle">
+                    Mein Dialog
+                </h2>
+            </header>
+            <section>
+                <p id="dialogDescr">Hier siehst du Informationen</p>
+            </section>
+
+            <footer>
+                <button aria-label="Dialog schließen" onclick="closeDialog()">Schließen</button>
+            </footer>
+        </dialog>
+</main>
+
+
+<footer></footer>
+    <script src="index.js"></script>
+</body>
+</html>
