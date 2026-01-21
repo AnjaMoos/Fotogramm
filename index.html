@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -12,30 +12,24 @@
 
 <body onload="render()">
     <header class="front_header">
-        <img src="./img/header.jpg" alt="logo" class="logo">
+        <img src="./img/header.jpg" alt="logo Forogram" class="logo">
         <h1>Anja's photo album</h1>
     </header>
 
 
     <main id="content">
 
-        <div id="dialog">
-        </div>
-
-        <dialog id="myDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDescr">
-            <header>
-                <h2 id="dialogTitle">
-                </h2>
+        <dialog id="myDialog" onclick="closeDialog()">
+            <header onclick="closeDialogPrevention(event)" id="dialogTitle" aria-labelledby="dialogTitle" class="dialogTitle">
             </header>
-            <section id="dialogImage">
-                <p id="dialogDescr">Hier sollte eine Beschreibung stehen</p>
+            <section id="dialogImage" onclick="closeDialogPrevention(event)">
+                <p><em>Hier sollte eine Beschreibung stehen</em></p>
             </section>
-            <div class="dialog_btn">
-                <button onclick="pictureBackwards()">◀</button><button onclick="nextPicture()">▶</button>
+            <div class="dialog_btn" onclick="closeDialogPrevention(event)">
+                <button onclick="pictureBackwards()" tabindex="0">◀</button><button onclick="nextPicture()" tabindex="0">▶</button>
             </div>
-            <button aria-label="Dialog schließen" onclick="closeDialog()">Schließen</button>
         </dialog>
-
+ 
     </main>
 
 

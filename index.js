@@ -1,4 +1,5 @@
 let currentIndex = 0;
+const CONTENT = document.getElementById('content');
 
 // Template Funktionen
 
@@ -8,11 +9,11 @@ let titles = ["Enrntereifes Gerstenfeld",
     "Schwarzer Schwan im Stausee",
     "Kreative Wohnung",
     "Burg Trausniz in Landshut",
-    "Peter Fox Konzert in Wien 2024",
     "Salzgrotte in Landshut",
     "Frühstück in Basel",
     "Wake and Groove in Geisenfeld",
-    "Ich im Pelzmantel",
+    "Vollmond",
+    "Blick von der Herreninsel am Chimsee",
     "Winterlandschaft"
 
 ];
@@ -24,72 +25,88 @@ let myImages = [
     "IMG20240730111029.jpg",
     "IMG20240731090051.jpg",
     "IMG20240815212431.jpg",
-    "IMG20240915230112.jpg",
     "IMG20240926110250.jpg",
     "IMG20241006105006.jpg",
     "IMG20250404181141.jpg",
-    "IMG20250912185329.jpg",
-    "IMG20251229082106.jpg"];
+    "IMG20250906212443.jpg",
+    "IMG20250918125203(1).jpg",
+    "IMG20251229082106(1).jpg"
+];
+
+
+let descriptions = [
+    "Barley field",
+    "wheat field",
+    "lakeside",
+    "young swan",
+    "creative apartment",
+    "castle at night",
+    "grotto",
+    "breakfast outside",
+    "wakeboarding",
+    "Full moon",
+    "bridge at the lakeside",
+    "winter landscape",
+];
 
 function render() {
-    let contentREf = document.getElementById('content');
-
     for (let index = 0; index < myImages.length; index++) {
-        contentREf.innerHTML += getNotesHtml(index);
+        CONTENT.innerHTML += getNotesHtml(index);
     }
 }
 
 function getNotesHtml(index) {
     return `
- <img onclick="openDialog(${index})" class="front_photo" src='./img/dialog/${myImages[index]}' alt='private photo'>
+ <img onclick="openDialog(${index})" class="front_photo" src='./img/dialog/${myImages[index]}' alt='${descriptions[index]}'>
  `
 }
 
 // Dialog
 
 function openDialog(index) {
-currentIndex = index;
-
     let dialogRef = document.getElementById('myDialog');
     let imageRef = document.getElementById('dialogImage');
     let titleRef = document.getElementById('dialogTitle');
 
 
+    currentIndex = index;
+    dialogRef.showModal();
+
     titleRef.innerText = titles[currentIndex];
 
+    imageRef.innerHTML = dialogImageHtml(currentIndex);
 
-    imageRef.innerHTML = `
-        <img class="dialog_img" src="./img/dialog/${myImages[currentIndex]}" alt="private photo">
-    `;
-
-
-    dialogRef.showModal();
     dialogRef.classList.add("opened");
 }
 
 function closeDialog() {
-    let dialogRef = document.getElementById('myDialog')
+    let dialogRef = document.getElementById('myDialog');
+
     dialogRef.close();
     dialogRef.classList.remove("opened");
     dialogRef.classList.add("closed")
 }
 
-function nextPicture(){
-       currentIndex++;
+function closeDialogPrevention(event) {
+    event.stopPropagation();
+}
+
+function nextPicture() {
+    currentIndex++;
 
     if (currentIndex >= myImages.length) {
-        currentIndex = 0; 
+        currentIndex = 0;
     }
 
     updateDialogImage();
 }
 
 
-function pictureBackwards(){
-      currentIndex--;
+function pictureBackwards() {
+    currentIndex--;
 
     if (currentIndex < 0) {
-        currentIndex = myImages.length - 1; // zum letzten Bild
+        currentIndex = myImages.length - 1;
     }
 
     updateDialogImage();
@@ -99,9 +116,14 @@ function updateDialogImage() {
     let imageRef = document.getElementById('dialogImage');
     let titleRef = document.getElementById('dialogTitle');
 
+
     titleRef.innerText = titles[currentIndex];
 
-    imageRef.innerHTML = `
+    imageRef.innerHTML = dialogImageHtml(currentIndex);
+}
+
+function dialogImageHtml(currentIndex) {
+    return `
         <img class="dialog_img"
              src="./img/dialog/${myImages[currentIndex]}"
              alt="private photo">

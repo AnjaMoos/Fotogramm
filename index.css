@@ -1,13 +1,65 @@
+:root{
+    --primary-color: #082229;
+    --secondary-color: #0B325E;
+    --tertiary-color: #2c90b7;;
+}
+
 
 body {
     margin: 0;
-    background-color: #2c90b7;
+    background-color: var(--tertiary-color);
+    font-family: "Raleway", sans-serif;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway/Raleway-VariableFont_wght.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway/Raleway-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway/Raleway-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway/Raleway-SemiBold.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway/Raleway-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: "Raleway";
+    src: url("./Raleway//Raleway-Light.ttf") format("truetype");
+    font-weight: lighter;
+    font-style: normal;
 }
 
 .front_header {
     height: 80px;
-    background-color: #082229;
-    box-shadow: 0px 10px 44px 9px #082229;
+    background-color: var(--primary-color);
+    box-shadow: 0px 10px 44px 9px var(--primary-color);
     display: flex;
     align-items: center;
 }
@@ -18,12 +70,12 @@ body {
 
 footer {
     height: 80px;
-    background-color: #082229;
+    background-color: var(--primary-color);
     width: 100%;
     position: fixed;
     bottom: 0;
     color: white;
-    font-size: 24px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     padding-left: 24px;
@@ -62,37 +114,44 @@ main {
     width: 250px;
     margin: 8px;
     border-radius: 8px;
-    border: solid #082229 2px;
+    border: solid var(--primary-color) 2px;
     transition: box-shadow 800ms;
 }
 
 .front_photo:hover {
     border: solid white 2px;
-    box-shadow: inset -1px 3px 8px 5px #2c90b7, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: inset -1px 3px 8px 5px var(--tertiary-color), 2px 5px 16px 0px var(--secondary-color), 5px 5px 15px 5px rgba(0, 0, 0, 0);
 }
 
 
 /* dialog */
 
-dialog{
+dialog {
     background-color: #abd2e1ad;
 }
 
+.dialogTitle{
+    color: var(--secondary-color);
+    font-size: 20px;
+    padding-bottom: 8px;
+    font-weight: 800;
+}
+
 dialog.opened {
-   border-radius: 8px;
-    border: solid #082229 2px;
+    border-radius: 8px;
+    border: solid var(--secondary-color) 2px;
     transform: translateX(50px);
     transition: all 500ms ease-in;
 }
 
 dialog.opened::backdrop {
-    background-color: #2c90b7;
+    background-color: var(--tertiary-color);
     transition: all 250ms ease-in;
 }
 
 dialog::backdrop {
     opacity: 0.8;
-    background-color: #2c90b7;
+    background-color: var(--tertiary-color);
     transition: all 250ms ease-in;
 }
 
@@ -101,57 +160,57 @@ dialog.closed {
     transition: all 500ms ease-in;
 }
 
-.dialog_img{
+.dialog_img {
     height: 400px;
     width: 400px;
 }
 
-#dialogImage{
-display: flex;
-justify-content: center;
-}
-
-.dialog_btn{
+.dialog_btn {
     padding: 16px;
     display: flex;
     justify-content: space-between;
 }
 
-@media (max-width: 773px){
-    h1{
+@media (max-width: 773px) {
+    h1 {
         font-size: 32px;
         padding-left: 80px;
     }
 
-.front_photo{
-    height: 200px;
-    width: 200px;
-}
+    .front_photo {
+        height: 200px;
+        width: 200px;
+    }
 
-    footer{
-        font-size: 16px;
+    footer {
+        font-size: 12px;
     }
 }
 
-@media (max-width: 600px){
-    h1{
+@media (max-width: 600px) {
+    h1 {
         display: none;
     }
 
-    .front_photo{
-    height: 150px;
-    width: 150px;
+    .front_photo {
+        height: 150px;
+        width: 150px;
+    }
+
+    .dialog_img {
+        height: 300px;
+        width: 300px;
+    }
 }
 
-.dialog_img {
-    height: 300px;
-    width: 300px;
-}
-}
 
+@media (max-width: 390px) {
+    .footer_logo {
+        display: none;
+    }
 
-@media (max-width: 390px){
-.footer_logo{
-    display: none;
-}
+        .dialog_img {
+        height: 250px;
+        width: 250px;
+    }
 }
